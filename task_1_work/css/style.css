@@ -1,0 +1,165 @@
+/* Файл стилей style.css */
+
+/* Общие стили */
+body {
+    background-color: rgb(240, 248, 255); /* Цвет фона на всех страницах (изменяется по желанию) */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Заголовки (h1, h2) */
+h1, h2 {
+    color: rgb(25, 25, 112);
+    text-align: center;
+}
+
+/* Абзацы (p) */
+p {
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 20px;
+}
+
+/* Меню сайта */
+nav ul {
+    list-style-type: none; /* Убираем маркеры списка */
+    padding: 0;
+    margin: 0;
+    background-color: rgb(70, 130, 180); /* Цвет фона меню */
+    overflow: hidden;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    display: inline-block;
+    color: white; /* Цвет текста ссылок в меню */
+    font-size: 16px; /* Размер шрифта ссылок */
+    font-weight: 400; /* Насыщенность шрифта */
+    text-decoration: none; /* Убираем подчеркивание */
+    padding: 14px 16px;
+}
+
+nav ul li a:hover {
+    background-color: rgb(95, 158, 160); /* Цвет фона при наведении */
+}
+
+/* Каталог */
+.catalog {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.catalog .item {
+    margin: 10px;
+    text-align: center;
+}
+
+.catalog .item img {
+    width: 200px;
+    height: auto;
+    border: 2px solid rgb(70, 130, 180); /* Граница изображения */
+}
+
+.catalog .item p a {
+    display: block;
+    margin-top: 5px;
+    color: rgb(25, 25, 112);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.catalog .item p a:hover {
+    text-decoration: underline;
+}
+
+/* Заголовки на странице товара каталога */
+h3 {
+    color: black;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: rgb(240, 240, 240); /* Цвет фона для заголовков (изменяется по желанию) */
+}
+
+/* Краткое описание товара */
+.short-description {
+    color: rgb(0, 0, 0); /* Установите цвет текста по желанию */
+    font-size: 14px;
+    font-style: italic;
+    line-height: 16px;
+    margin: 20px;
+}
+
+/* Подробное описание товара */
+.detailed-description {
+    color: rgb(0, 0, 0); /* Установите цвет текста по желанию */
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    margin: 20px;
+}
+
+/* Список характеристик товара */
+.characteristics {
+    list-style: none;
+    padding-left: 20px; /* Adjust as needed */
+}
+
+.characteristics li {
+    background: url('../img/plane.png') no-repeat left center; /* Относительный путь */
+    background-size: 16px 16px; /* Adjust size as needed */
+    padding-left: 24px; /* Adjust as needed */
+}
+
+/* Общие стили для изображений */
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    height: auto;
+    border: 2px solid rgb(70, 130, 180); /* Граница для всех изображений */
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(70, 130, 180); /* Цвет фона футера */
+    color: white; /* Цвет текста в футере */
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Горизонтальная линия */
+hr {
+    border: 0;
+    height: 1px;
+    background: rgb(70, 130, 180); /* Цвет линии */
+    margin: 0;
+}
+
+/* Фиксированные размеры для изображений с классом thumbnail */
+.thumbnail {
+    width: 600px; /* Уменьшение размера изображения */
+    height: 500px; /* Фиксированная высота изображения */
+    object-fit: cover; /* Обрезка изображения, чтобы оно соответствовало заданным размерам */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+/* Заголовки (Краткое описание товара, Характеристики, Подробное описание товара) */
+.header {
+    color: black;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: rgb(255, 255, 255); /* Установите цвет фона по желанию */
+}

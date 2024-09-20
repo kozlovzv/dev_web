@@ -1,0 +1,124 @@
+/* Общие стили */
+body {
+    background-color: rgb(240, 248, 255); /* Цвет фона */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Заголовки (h1, h2) */
+h1, h2 {
+    color: rgb(25, 25, 112);
+    text-align: center;
+}
+
+/* Заголовки */
+h2, h3 {
+    color: black;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: rgb(240, 240, 240); /* Пример цвета фона */
+}
+
+/* Каталог */
+.catalog {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.catalog .item {
+    width: 300px; /* Одинаковая ширина всех карточек */
+    height: 350px; /* Одинаковая высота всех карточек */
+    margin: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Колонки для выравнивания */
+    justify-content: space-between; /* Равномерное распределение содержимого */
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.catalog .item img,
+.card-img-top {
+    width: 100%;
+    height: 200px; /* Фиксированная высота дя изображения */
+    object-fit: cover; /* Обрезка изображения, чтобы оно соответствовало заданным размерам */
+    border: 2px solid rgb(70, 130, 180); /* Граница изображения */
+    /* Добавленные стили */
+    max-width: 100%;
+    max-height: 200px;
+    min-width: 100%;
+    min-height: 200px;
+    display: block; /* Убедитесь, что изображение ведет себя как блок */
+}
+
+.catalog .item p a {
+    display: block;
+    margin-top: 5px;
+    color: rgb(25, 25, 112);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.catalog .item p a:hover {
+    text-decoration: underline;
+}
+
+/* Кнопка выровнена по центру карточки */
+.catalog .item button {
+    background-color: rgb(70, 130, 180);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: auto; /* Кнопка прижата к низу карточки */
+}
+
+.catalog .item button:hover {
+    background-color: rgb(25, 25, 112);
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(70, 130, 180);
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.custom-list {
+    list-style: none; /* Убираем стандартные маркеры */
+    padding-left: 0;
+}
+
+.custom-list li {
+    background: url('../img/plane.png') no-repeat left center; /* Путь к вашему изображению */
+    padding-left: 30px; /* Отступ для изображения */
+    margin-bottom: 10px; /* Отступ между элементами списка */
+    background-size: 20px 20px; /* Размер изображения маркера */
+}
+
+/* Краткое описание */
+.short-description {
+    color: rgb(100, 100, 100); /* Пример цвета текста */
+    font-size: 14px;
+    font-style: italic;
+    line-height: 16px;
+}
+
+/* Подробное описание */
+.detailed-description {
+    color: rgb(80, 80, 80); /* Пример цвета текста */
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
