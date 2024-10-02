@@ -88,7 +88,7 @@ footer {
     text-align: center;
     padding: 10px;
     background-color: rgb(70, 130, 180);
-    color: white;
+    color: rgb(0, 0, 0);
     position: fixed;
     width: 100%;
     bottom: 0;
