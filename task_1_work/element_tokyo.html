@@ -2,8 +2,16 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Токио - современный мегаполис Японии. Узнайте о культуре, достопримечательностях и традициях">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
     <title>Токио - Мои путешествия по миру</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 </head>
 <body>
     <!-- Меню навигации -->
@@ -16,36 +24,59 @@
 
     <hr>
 
-    <!-- Название города -->
-    <h2>Токио</h2>
+    <main>
+        <article>
+            <h1>Токио</h1>
+            <img src="img/tokyo_view.jpg" alt="Панорама ночного Токио" data-src="img/tokyo_view.jpg" class="thumbnail loading">
 
-    <!-- Изображение города с возможностью увеличения -->
-    <a href="img/tokyo_view.jpg" target="_blank">
-        <img src="img/tokyo_view.jpg" alt="Токио" class="thumbnail">
-    </a>
+            <!-- Краткое описание -->
+            <p class="short-description">Токио - современный мегаполис с древними традициями, столица Японии.</p>
 
-    <!-- Краткое описание -->
-    <p class="short-description">Токио - современный мегаполис с древними традициями, столица Японии.</p>
+            <!-- Подробное описание -->
+            <h3>Описание</h3>
+            <p class="detailed-description">
+                Токио - город контрастов, где традиционная японская культура гармонично сочетается с передовыми технологиями. 
+                Район Акихабара известен как центр электроники и аниме-культуры, в то время как Асакуса сохраняет атмосферу 
+                старого Токио с древним храмом Сэнсо-дзи. Район Харадзюку славится яркой молодежной модой, а Гиндза предлагает 
+                люксовый шоппинг. Токийский рыбный рынок Цукидзи (теперь Тоёсу) - крупнейший в мире, где можно попробовать 
+                самые свежие суши. Токийская телебашня Skytree высотой 634 метра предлагает захватывающий вид на город.
+            </p>
 
-    <!-- Подробное описание -->
-    <h3>Описание</h3>
-    <p class="detailed-description">
-        Токио сочетает в себе ультрасовременные технологии и глубокие культурные традиции. Здесь вы можете посетить древние храмы, насладиться японской кухней и увидеть футуристическую архитектуру.
-    </p>
+            <!-- Характеристики или интересные факты -->
+            <h3>Интересные факты</h3>
+            <ul class="characteristics">
+                <li>В метро Токио работают специальные "толкачи" в час пик</li>
+                <li>Город имеет самую сложную систему метро в мире</li>
+                <li>Здесь находится самый оживленный пешеходный переход (Сибуя)</li>
+                <li>В Токио более 14,000 автоматов по продаже напитков</li>
+                <li>Город является самой большой городской экономикой в мире</li>
+            </ul>
 
-    <!-- Характеристики или интересные факты -->
-    <h3>Интересные факты</h3>
-    <ul class="characteristics">
-        <li>Токио - самый населенный город в мире.</li>
-        <li>Здесь находится самая загруженная железнодорожная станция в мире - Синдзюку.</li>
-        <li>В Токио проводится ежегодный фестиваль цветов сакуры.</li>
-    </ul>
+            <!-- Карта города -->
+            <h3>Расположение на карте</h3>
+            <div id="tokyo-map" style="height: 400px; margin: 20px 0;"></div>
+
+            <!-- Погода -->
+            <h3>Текущая погода</h3>
+            <div class="weather-info loading">
+                Загрузка погоды...
+            </div>
+        </article>
+    </main>
 
     <hr>
 
-    <!-- Подвал -->
     <footer>
         <p>&copy; Все права защищены</p>
     </footer>
+    <script src="js/main.js"></script>
+    <script src="js/maps.js"></script>
+    <script src="js/weather.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initMap('tokyo', cityCoordinates.tokyo);
+            getWeather('Tokyo');
+        });
+    </script>
 </body>
 </html>

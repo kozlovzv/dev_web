@@ -1,18 +1,88 @@
 /* Файл стилей style.css */
 
+/* Добавляем в начало файла */
+:root {
+    --primary-color: rgb(70, 130, 180);
+    --hover-color: rgb(95, 158, 160);
+    --text-color: rgb(25, 25, 112);
+    --bg-color: rgb(240, 248, 255);
+    --text-color: rgb(0, 0, 0);
+    --font-main: 'Source Sans Pro', system-ui, -apple-system, sans-serif;
+    --font-headers: 'Playfair Display', Georgia, serif;
+    --content-width: min(90%, 1200px);
+    --spacing-section: 3rem;
+    --base-font-size: 18px;
+    --line-height-body: 1.7;
+    --line-height-headings: 1.3;
+    --max-width-content: min(90%, 1200px);
+    --paragraph-max-width: 70ch;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: rgb(25, 25, 35);
+        --text-color: rgb(240, 240, 240);
+    }
+}
+
+/* Добавляем стили для доступности */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
 /* Общие стили */
 body {
-    background-color: rgb(240, 248, 255); /* Цвет фона на всех страницах (изменяется по желанию) */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    font-size: 18px;
+    line-height: 1.7;
     margin: 0;
     padding: 0;
     height: 100%;
+    max-width: var(--max-width-content);
+    margin: 0 auto;
 }
 
 /* Заголовки (h1, h2) */
 h1, h2 {
     color: rgb(25, 25, 112);
     text-align: center;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-headers);
+    line-height: 1.3;
+    margin: var(--spacing-section) 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: none;
+    color: var(--text-color);
+    margin: 2rem 0 1rem;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    margin-bottom: 1rem;
 }
 
 /* Абзацы (p) */
@@ -43,6 +113,23 @@ nav ul li a {
     font-weight: 400; /* Насыщенность шрифта */
     text-decoration: none; /* Убираем подчеркивание */
     padding: 14px 16px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
 }
 
 nav ul li a:hover {
@@ -57,9 +144,13 @@ nav ul li a:hover {
     margin: 20px;
 }
 
+/* Обновляем стили карточек каталога */
 .catalog .item {
     margin: 10px;
     text-align: center;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
 }
 
 .catalog .item img {
@@ -90,33 +181,49 @@ h3 {
 
 /* Краткое описание товара */
 .short-description {
-    color: rgb(0, 0, 0); /* Установите цвет текста по желанию */
-    font-size: 14px;
+    color: var(--text-color); /* Установите цвет текста по желанию */
+    font-size: 1.2rem;
+    line-height: 1.6;
     font-style: italic;
-    line-height: 16px;
-    margin: 20px;
+    opacity: 0.9;
+    margin: 1.5rem 0;
+    max-width: var(--paragraph-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    line-height: var(--line-height-body);
 }
 
 /* Подробное описание товара */
 .detailed-description {
-    color: rgb(0, 0, 0); /* Установите цвет текста по желанию */
-    font-size: 16px;
+    color: var(--text-color); /* Установите цвет текста по желанию */
+    font-size: 1.1rem;
     font-weight: 400;
-    line-height: 24px;
+    line-height: 1.8;
     text-align: left;
-    margin: 20px;
+    margin: 1.5rem 0;
+    max-width: var(--paragraph-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    line-height: var(--line-height-body);
 }
 
 /* Список характеристик товара */
 .characteristics {
     list-style: none;
     padding-left: 20px; /* Adjust as needed */
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 1.5rem 0;
 }
 
 .characteristics li {
     background: url('../img/plane.png') no-repeat left center; /* Относительный путь */
     background-size: 16px 16px; /* Adjust size as needed */
     padding-left: 24px; /* Adjust as needed */
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    max-width: var(--paragraph-max-width);
+    padding-left: 2rem;
 }
 
 /* Общие стили для изображений */
@@ -127,17 +234,18 @@ img {
     max-width: 80%;
     height: auto;
     border: 2px solid rgb(70, 130, 180); /* Граница для всех изображений */
+    content-visibility: auto;
 }
 
 /* Футер */
 footer {
     text-align: center;
     padding: 10px;
-    background-color: rgb(70, 130, 180); /* Цвет фона футера */
-    color: white; /* Цвет текста в футере */
-    position: fixed;
+    background-color: rgb(70, 130, 180);
+    color: white;
+    position: relative; /* Меняем с fixed на relative */
     width: 100%;
-    bottom: 0;
+    margin-top: 2rem; /* Добавляем отступ сверху */
 }
 
 /* Горизонтальная линия */
@@ -150,10 +258,19 @@ hr {
 
 /* Фиксированные размеры для изображений с классом thumbnail */
 .thumbnail {
-    width: 600px; /* Уменьшение размера изображения */
-    height: 500px; /* Фиксированная высота изображения */
+    width: min(100%, 800px);
+    height: auto;
+    aspect-ratio: 16/9;
+    margin: 2rem auto;
     object-fit: cover; /* Обрезка изображения, чтобы оно соответствовало заданным размерам */
     cursor: pointer; /* Указатель при наведении */
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: brightness(0.9);
+}
+
+.thumbnail:hover {
+    transform: scale(1.02);
+    filter: brightness(1);
 }
 
 /* Заголовки (Краткое описание товара, Характеристики, Подробное описание товара) */
@@ -162,4 +279,235 @@ hr {
     font-size: 18px;
     font-weight: 400;
     background-color: rgb(255, 255, 255); /* Установите цвет фона по желанию */
+}
+
+/* Фокус для интерактивных элементов */
+a:focus, button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Добавляем медиа-запрос для адаптивности */
+@media (max-width: 768px) {
+    .thumbnail {
+        width: 100%;
+        height: auto;
+    }
+    
+    .catalog {
+        flex-direction: column;
+    }
+}
+
+/* Анимации и переходы */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Добавляем стили поиска */
+.search-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+#searchInput:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+/* Стили для фильтров */
+.filters {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.filter-btn {
+    background: var(--bg-color);
+    border: 1px solid var(--primary-color);
+    color: var(--text-color);
+    padding: 8px 16px;
+    margin: 0 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.filter-btn:hover {
+    background: var(--hover-color);
+    color: white;
+}
+
+/* Удаляем секцию стилей галереи */
+/* Стили для слайдшоу */
+.slideshow-modal,
+.gallery,
+.gallery-img,
+.nav-btn,
+.close-slideshow {
+    display: none;
+}
+
+/* Стили для карты */
+[id$="-map"] {
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    [id$="-map"] {
+        height: 300px !important;
+    }
+}
+
+/* Стили для погоды */
+.weather-info {
+    background: var(--primary-color);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px;
+    text-align: center;
+}
+
+.weather-temp {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.weather-desc {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.weather-details {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.weather-info.loading {
+    background: var(--hover-color);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.6; }
+}
+
+/* Стили для ошибок погоды */
+.weather-error {
+    color: #ff6b6b;
+    padding: 10px;
+    text-align: center;
+}
+
+.weather-error small {
+    display: block;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+/* Стили для прогресс-бара */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--primary-color);
+    z-index: 1001;
+    transition: width 0.2s ease;
+}
+
+.view-counter {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Стили для избранного */
+.city-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.favorite-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.2);
+}
+
+.favorite-btn.active {
+    color: gold;
+}
+
+/* Контейнеры */
+main {
+    width: var(--content-width);
+    margin: 0 auto;
+    padding: 2rem 0;
+    min-height: calc(100vh - 150px); /* Добавляем минимальную высоту */
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    :root {
+        --spacing-section: 2rem;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    .short-description {
+        font-size: 1.1rem;
+    }
 }

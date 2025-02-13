@@ -2,8 +2,18 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Париж - город любви и романтики. Узнайте о главных достопримечательностях и интересных фактах">
     <title>Париж - Мои путешествия по миру</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/favorites.js"></script>
 </head>
 <body>
     <!-- Меню навигации -->
@@ -16,42 +26,67 @@
 
     <hr>
 
-    <!-- Название города -->
-    <h2>Париж</h2>
+    <main>
+        <article>
+            <div class="city-header">
+                <h1>Париж</h1>
+                <button class="favorite-btn" data-city="paris" title="Добавить в избранное">☆</button>
+            </div>
 
-    <!-- Изображение города с возможностью увеличения -->
-    <a href="img/paris_view.jpg" target="_blank">
-        <img src="img/paris_view.jpg" alt="Париж" class="thumbnail">
-    </a>
+            <!-- Изображение города с возможностью увеличения -->
+            <a href="img/paris_view.jpg" target="_blank">
+                <img src="img/paris_view.jpg" alt="Панорама Парижа с Эйфелевой башней" data-src="img/paris_view.jpg" class="thumbnail">
+            </a>
 
-    <!-- Краткое описание -->
-    <p class="short-description">Париж - город любви и романтики, столица Франции.</p>
+            <!-- Краткое описание -->
+            <p class="short-description">Париж - город любви и романтики, столица Франции.</p>
 
-    <!-- Подробное описание -->
-    <h3>Описание</h3>
-    <p class="detailed-description">
-        Париж известен своими историческими достопримечательностями, такими как Эйфелева башня, Лувр и Нотр-Дам. Здесь вы можете насладиться изысканной кухней, посетить знаменитые музеи и прогуляться по уютным улочкам.
-    </p>
+            <!-- Подробное описание -->
+            <h3>Описание</h3>
+            <p class="detailed-description">
+                Париж - это не просто город, а настоящий музей под открытым небом. Каждая улица здесь дышит историей и романтикой. 
+                Монмартр привлекает художников и богему, Латинский квартал полон студенческой жизни, а роскошные Елисейские поля 
+                олицетворяют шик французской столицы. В городе более 150 музеев, включая всемирно известный Лувр с Моной Лизой и 
+                музей Орсе с импрессионистами. Гастрономическая сцена Парижа включает как уютные бистро, так и рестораны высокой кухни 
+                с мишленовскими звездами.
+            </p>
 
-    <!-- Характеристики или интересные факты -->
-    <h3>Интересные факты</h3>
-    <ul class="characteristics">
-        <li>Эйфелева башня была построена в 1889 году.</li>
-        <li>Лувр - самый посещаемый музей в мире.</li>
-        <li>Парижские катакомбы простираются на 300 км под городом.</li>
-    </ul>
+            <!-- Характеристики или интересные факты -->
+            <h3>Интересные факты</h3>
+            <ul class="characteristics">
+                <li>Эйфелева башня была временной конструкцией и должна была простоять всего 20 лет</li>
+                <li>В парижском Лувре хранится более 380,000 экспонатов</li>
+                <li>Парижские катакомбы хранят останки более 6 миллионов человек</li>
+                <li>В городе 37 мостов через Сену</li>
+                <li>Парижское метро имеет 303 станции</li>
+            </ul>
+
+            <!-- Карта города -->
+            <h3>Расположение на карте</h3>
+            <div id="paris-map" style="height: 400px; margin: 20px 0;"></div>
+
+            <!-- Погода -->
+            <h3>Текущая погода</h3>
+            <div class="weather-info loading">
+                Загрузка погоды...
+            </div>
+        </article>
+    </main>
 
     <hr>
 
-    <!-- подвал -->
     <footer>
         <p>&copy; Все права защищены</p>
     </footer>
 
+    <script src="js/main.js"></script>
+    <script src="js/maps.js"></script>
+    <script src="js/weather.js"></script>
     <script>
-        document.querySelector('.thumbnail').addEventListener('click', function(event) {
-            event.preventDefault();
-            window.open(this.src, '_blank');
+        document.addEventListener('DOMContentLoaded', () => {
+            initMap('paris', cityCoordinates.paris);
+            getWeather('Paris');
+            initFavorites();
         });
     </script>
 </body>

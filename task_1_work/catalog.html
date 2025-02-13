@@ -2,8 +2,15 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Каталог популярных туристических направлений - Париж, Токио, Нью-Йорк">
+    <meta name="keywords" content="путешествия, туризм, каталог, Париж, Токио, Нью-Йорк">
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <title>Каталог путешествий - Мои путешествия по миру</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Меню навигации -->
@@ -19,22 +26,32 @@
     <!-- Заголовок страницы -->
     <h2>Каталог путешествий</h2>
 
-    <!-- Содержимое каталога -->
-    <div class="catalog">
-        <div class="item">
-            <img src="img/paris_view.jpg" alt="Париж" class="thumbnail">
-            <p><a href="element_paris.html">Париж</a></p>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Поиск по городам..." aria-label="Поиск по городам">
+        <div class="filters">
+            <button class="filter-btn active" data-region="all">Все</button>
+            <button class="filter-btn" data-region="europe">Европа</button>
+            <button class="filter-btn" data-region="asia">Азия</button>
+            <button class="filter-btn" data-region="america">Америка</button>
         </div>
-        <div class="item">
+    </div>
+
+    <!-- Содержимое каталога -->
+    <main class="catalog">
+        <div class="item" data-region="europe">
+            <img src="img/paris_view.jpg" alt="Эйфелева башня в Париже" data-src="img/paris_view.jpg" class="thumbnail">
+            <p><a href="element_paris.html" aria-label="Подробнее о Париже">Париж</a></p>
+        </div>
+        <div class="item" data-region="asia">
             <img src="img/tokyo_view.jpg" alt="Токио" class="thumbnail">
             <p><a href="element_tokyo.html">Токио</a></p>
         </div>
-        <div class="item">
+        <div class="item" data-region="america">
             <img src="img/new_york.jpg" alt="Нью-Йорк" class="thumbnail">
             <p><a href="element_newyork.html">Нью-Йорк</a></p>
         </div>
         <!-- Добавьте больше элементов по желанию -->
-    </div>
+    </main>
 
     <hr>
 
@@ -42,5 +59,6 @@
     <footer>
         <p>&copy; Все права защищены</p>
     </footer>
+    <script src="js/main.js"></script>
 </body>
 </html>

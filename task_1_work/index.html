@@ -2,8 +2,16 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Блог о путешествиях по миру - впечатления, фотографии и советы путешественникам">
+    <meta name="keywords" content="путешествия, туризм, города мира, блог">
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <title>Мои путешествия по миру</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
     <style>
         .thumbnail {
             width: 300px; /* Уменьшение размера изображения */
@@ -12,28 +20,27 @@
     </style>
 </head>
 <body>
-    <!-- Меню навигации -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Главная</a></li>
-            <li><a href="catalog.html">Каталог путешествий</a></li>
-        </ul>
-    </nav>
-
+    <header role="banner">
+        <!-- Меню навигации -->
+        <nav role="navigation" aria-label="Основная навигация">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог путешествий</a></li>
+            </ul>
+        </nav>
+    </header>
     <hr>
+    <main role="main">
+        <h1>Мои путешествия по миру</h1>
 
-    <!-- Название сайта -->
-    <h1>Мои путешествия по миру</h1>
-
-    <!-- Приветственное сообщение -->
-    <p>Добро пожаловать на мой блог о путешествиях! Здесь я делюсь впечатлениями, фотографиями и советами из моих поездок по разным странам.</p>
-
+        <!-- Приветственное сообщение -->
+        <p>Добро пожаловать на мой блог о путешествиях! Здесь я делюсь впечатлениями, фотографиями и советами из моих поездок по разным странам.</p>
+    </main>
     <hr>
-
-    <!-- Подвал -->
-    <footer>
+    <footer role="contentinfo">
         <p>&copy; Все права защищены</p>
     </footer>
+    <script src="js/main.js"></script>
 </body>
 </html>
 

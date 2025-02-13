@@ -2,8 +2,16 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Нью-Йорк - город небоскребов и культурного разнообразия. Узнайте о местах, которые стоит посетить">
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <title>Нью-Йорк - Мои путешествия по миру</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 </head>
 <body>
     <!-- Меню навигации -->
@@ -16,36 +24,59 @@
 
     <hr>
 
-    <!-- Название города -->
-    <h2>Нью-Йорк</h2>
+    <main>
+        <article>
+            <h1>Нью-Йорк</h1>
+            <img src="img/new_york.jpg" alt="Панорама Манхэттена" data-src="img/new_york.jpg" class="thumbnail loading">
 
-    <!-- Изображение города с возможностью увеличения -->
-    <a href="img/new_york.jpg" target="_blank">
-        <img src="img/new_york.jpg" alt="Нью-Йорк" class="thumbnail">
-    </a>
+            <!-- Краткое описание -->
+            <p class="short-description">Нью-Йорк - город, который никогда не спит, финансовый и культурный центр США.</p>
 
-    <!-- Краткое описание -->
-    <p class="short-description">Нью-Йорк - город, который никогда не спит, финансовый и культурный центр США.</p>
+            <!-- Подробное описание -->
+            <h3>Описание</h3>
+            <p class="detailed-description">
+                Нью-Йорк - это воплощение американской мечты, где каждый район имеет свой уникальный характер. Манхэттен 
+                известен своими небоскребами и Центральным парком, Бруклин привлекает художественной сценой и хипстерской 
+                культурой, а Квинс славится этническим разнообразием и гастрономией. Таймс-сквер ослепляет неоновыми огнями, 
+                а Уолл-стрит остается финансовым сердцем мира. Бродвей предлагает лучшие театральные постановки, а музеи 
+                мирового класса, такие как МоМА и Метрополитен, хранят бесценные произведения искусства.
+            </p>
 
-    <!-- Подробное описание -->
-    <h3>Описание</h3>
-    <p class="detailed-description">
-        Нью-Йорк предлагает бесконечные возможности для развлечений и изучения культуры. Здесь вы можете посетить Бродвей, прогуляться по Центральному парку и подняться на вершину Эмпайр-стейт-билдинг.
-    </p>
+            <!-- Характеристики или интересные факты -->
+            <h3>Интересные факты</h3>
+            <ul class="characteristics">
+                <li>Более 800 языков используются в Нью-Йорке - это самое языково разнообразное место на Земле</li>
+                <li>Центральный парк больше государства Монако</li>
+                <li>Первая пиццерия в США открылась в Нью-Йорке в 1905 году</li>
+                <li>На Уолл-стрит установлен бронзовый бык весом 3,2 тонны</li>
+                <li>Каждый день метро перевозит более 4,5 миллионов пассажиров</li>
+            </ul>
 
-    <!-- Характеристики или интересные факты -->
-    <h3>Интересные факты</h3>
-    <ul class="characteristics">
-        <li>Статуя Свободы была подарена США Францией в 1886 году.</li>
-        <li>В Нью-Йорке говорят на более чем 800 языках.</li>
-        <li>Метрополитен Нью-Йорка работает 24 часа в сутки.</li>
-    </ul>
+            <!-- Карта города -->
+            <h3>Расположение на карте</h3>
+            <div id="newyork-map" style="height: 400px; margin: 20px 0;"></div>
+
+            <!-- Погода -->
+            <h3>Текущая погода</h3>
+            <div class="weather-info loading">
+                Загрузка погоды...
+            </div>
+        </article>
+    </main>
 
     <hr>
 
-    <!-- Подвал -->
     <footer>
         <p>&copy; Все права защищены</p>
     </footer>
+    <script src="js/main.js"></script>
+    <script src="js/maps.js"></script>
+    <script src="js/weather.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initMap('newyork', cityCoordinates.newyork);
+            getWeather('New York');
+        });
+    </script>
 </body>
 </html>
